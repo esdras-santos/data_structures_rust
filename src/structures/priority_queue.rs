@@ -118,11 +118,11 @@ impl<T> PQueue<T> where T: std::cmp::Eq + std::hash::Hash + std::cmp::PartialOrd
     pub fn remove(&mut self, elem: T) -> bool{
         let index = self.get_track(elem);
 
-        if index.is_none() {
+        if !index.is_none() {
             self.remove_at(index.unwrap());
         }
 
-        index != None
+        !index.is_none()
     }
 
     fn remove_at(&mut self, i: usize) -> Option<T>{
